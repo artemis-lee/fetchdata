@@ -1,46 +1,39 @@
- const button = document.getElementById('button');
- const list =  document.getElementById('users');
- const message = document.getElementById('message');
- 
- function throttle (func, delay) {
-    let isThrottled = false;
+const button = document.querySelector("#post");
+const comment = document.querySelector("#comment");
+const list = document.querySelector("#list");
 
-    function wrapper () {
-        if (isThrottled) return;
-
-        func.apply(this, arguments);
-
-        isThrottled = true;
-        
-        setTimeout(function() {
-            isThrottled = false;
-        }, delay)
-    }
-    return wrapper
- }
-
-
- async function fetchData() {
-    list.innerHTML = ' ';
-    message.textContent = "Fetching users... Please wait.";
-    try {
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
-
-    const data = await response.json();
-    data.forEach(user => {
-        const li = document.createElement('li');
-        li.textContent = user.name;
-        list.appendChild(li);
-    });
-    } 
-    catch(e) {
-        console.error("Fetch error", e);
-        message.textContent = "Failed to load users";
-        message.style.color = 'red'
-    }
-
+function loadComments() {
+  const savedComments = localStorage.getItem('comments');
+  if (savedComments) {
+      list.innerHTML = savedComments;
+  }
 }
-button.addEventListener('click', throttle(fetchData, 2000))
 
-console.log('Hello');
+function saveComments() {
+  localStorage.setItem('comments', list.innerHTML);
+}
+
+button.addEventListener('click', () => {
+    const li = document.createElement('li');
+    const deleteButton = document.createElement('button');
+    li.textContent = comment.value;
+    deleteButton.textContent = 'Delete';
+    li.appendChild(deleteButton);
+    list.appendChild(li);
+
+    comment.value = ''; 
+    saveComments(); 
+
+}) 
+
+list.addEventListener('click', (event) => {
+  if (event.target.tagName === 'BUTTON') {
+      const li = event.target.closest('li');
+      if (li) {
+          li.remove();
+          saveComments(); 
+      }
+  }
+}, true); 
+
+loadComments();
