@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="text"> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi voluptatibus quis iste, magni sed iure. Beatae modi accusantium numquam id maiores hic quo quis nihil veniam, impedit explicabo commodi aperiam.</p>
+<div id="city_search">
+    <input type="text" name="" id="search">
+    <button id="search-btn">Search</button>
+</div>
+<div id="weather">
+    <h2 id="city-name"></h2>
+    <div class="weather-info">
+        <img id="weather-icon" class="weather-icon" src="" alt="Weather icon">
+        <span id="temperature"></span>
     </div>
-    <div class="input-and-button">
-        <input type="text" id = "comment">
-        <button id="post">
-           Post
-        </button>
-    </div>
-    <div >
-        <ul id="list">
-            
-        </ul>
-    </div>
-    <script src="script.js"></script>
+    <div id="weather-description" class="weather-info"></div>
+    <div id="humidity" class="weather-info"></div>
+    <div id="wind-speed" class="weather-info"></div>
+</div>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>

@@ -1,20 +1,13 @@
-body {
-    margin: 0;
-    padding: 30px;
-    justify-content: center;
-    display: grid;
-    background-color: antiquewhite;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 30px;
-}
-
-#button {
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #1536cb, #6a11cb);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: 600;
-    cursor: pointer;
-}
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #weather-container {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f0f8ff;
+            display: none;
+        }
